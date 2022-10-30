@@ -15,10 +15,14 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_bloc: ^8.0.0
+  json_annotation: 
+  dio:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  json_serializable: 
 
   flutter_lints: ^2.0.0
 

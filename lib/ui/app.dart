@@ -1,6 +1,8 @@
+import 'package:cubit_simple/api/repository/user_repository.dart';
+import 'package:cubit_simple/cubit/api/api_cubit.dart';
 import 'package:cubit_simple/cubit/counter/counter_cubit.dart';
 import 'package:cubit_simple/cubit/theme/theme_cubit.dart';
-import 'package:cubit_simple/ui/home.dart';
+import 'package:cubit_simple/ui/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ThemeCubit()),
         BlocProvider(create: (context) => CounterCubit()),
+        BlocProvider(create: (context) => ApiCubit(UserRepository())),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
@@ -20,7 +23,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: state.theme,
-            home: MyHomePage(title: 'Flutter Demo Home Page'),
+            initialRoute: Navigation.initialRoute,
+            onGenerateRoute: Navigation.onGenerateRoute,
           );
         },
       ),
